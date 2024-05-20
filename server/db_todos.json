@@ -1,0 +1,28 @@
+{
+  "todos": [
+    {
+      "text": "task one",
+      "completed": false,
+      "id": 11,
+      "color": "green"
+    },
+    {
+      "text": "task two",
+      "completed": false,
+      "id": 12,
+      "color": "yellow"
+    },
+    {
+      "text": "this is a simple todo application using rtk query. this is very simple application",
+      "completed": false,
+      "id": 13
+    }
+  ],
+  "filters": [
+    {
+      "id": 1,
+      "status": "Incomplete",
+      "colors": []
+    }
+  ]
+}
