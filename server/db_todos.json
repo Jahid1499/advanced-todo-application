@@ -8,7 +8,7 @@
     },
     {
       "text": "task two",
-      "completed": false,
+      "completed": true,
       "id": 12,
       "color": "yellow"
     },
