@@ -37,7 +37,7 @@
   "filters": [
     {
       "id": 1,
-      "status": "Incomplete",
+      "status": "All",
       "colors": []
     }
   ]

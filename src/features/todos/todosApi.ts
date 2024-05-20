@@ -20,7 +20,7 @@ export const todosApi = apiSlice.injectEndpoints({
             })
         }),
         deleteTodos: builder.mutation({
-            query: (id) => ({
+            query: (id: number) => ({
                 url: `/todos/${id}`,
                 method: 'DELETE',
             })

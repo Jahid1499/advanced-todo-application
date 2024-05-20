@@ -1,4 +1,8 @@
-import { useGetFiltersQuery } from "../features/filters/filterApi";
+import {
+  useGetFiltersQuery,
+  useUpdateColorStatusMutation,
+  useUpdateStatusMutation,
+} from "../features/filters/filterApi";
 import { useGetTodosQuery } from "../features/todos/todosApi";
 
 type TodoTypes = {
@@ -11,7 +15,8 @@ type TodoTypes = {
 const Footer = () => {
   const { data: todos } = useGetTodosQuery({});
   const { data: filters } = useGetFiltersQuery({});
-  console.log(filters);
+  const [updateStatus] = useUpdateStatusMutation();
+  const [updateColorStatus] = useUpdateColorStatusMutation();
 
   let status: string = "";
   let colors: string[] = [];
@@ -26,11 +31,24 @@ const Footer = () => {
   ).length;
 
   const handleStatusChange = (status: string) => {
-    console.log(status);
+    updateStatus({
+      id: 1,
+      data: { status },
+    });
   };
 
   const handleColorChange = (color: string) => {
-    console.log(color);
+    console.log(colors, status);
+    let newColor = JSON.parse(JSON.stringify(colors));
+    if (newColor.includes(color)) {
+      newColor = newColor.filter(
+        (existingColor: string) => existingColor !== color
+      );
+    } else {
+      newColor = [...newColor, color];
+    }
+
+    updateColorStatus({ colors: [...newColor] });
   };
 
   const numberOfTodos = (no_of_todos: number) => {
