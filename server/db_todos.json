@@ -16,6 +16,31 @@
       "text": "this is a simple todo application using rtk query. this is very simple application",
       "completed": false,
       "id": 13
+    },
+    {
+      "text": "first todo",
+      "completed": false,
+      "id": 14
+    },
+    {
+      "text": "",
+      "completed": false,
+      "id": 15
+    },
+    {
+      "text": "",
+      "completed": false,
+      "id": 16
+    },
+    {
+      "text": "hello",
+      "completed": false,
+      "id": 17
+    },
+    {
+      "text": "dsdfsdf",
+      "completed": false,
+      "id": 18
     }
   ],
   "filters": [
