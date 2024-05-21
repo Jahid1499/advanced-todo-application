@@ -1,6 +1,6 @@
 {
-  "name": "lws-json-server-expense-tracker",
-  "description": "Example in memory Expense Tracker api with json-server by Learn with Sumit",
+  "name": "advanced-todo-application",
+  "description": "Example in memory advanced todos api with json-server ",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,5 +10,5 @@
     "json-server": "^0.17.0"
   },
   "keywords": [],
-  "author": "Sumit Saha, Learn with Sumit"
+  "author": "Jahid hassan shovon"
 }
