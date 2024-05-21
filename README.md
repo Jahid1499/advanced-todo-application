@@ -1,30 +1,62 @@
-# React + TypeScript + Vite
+<!-- GET SERVER TEMPLATE -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Get SERVER Template
 
-Currently, two official plugins are available:
+You can find the raw SERVER template of the RTK Query - advanced todo application from the "server" folder.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to clone project
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```sh
+git clone https://github.com/Jahid1499/advanced-todo-application
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## How to run server
+
+1. Go to the cloned project directory
+
+```sh
+cd advanced-todo-application
+```
+
+2. First you need run server - for this follow those step
+
+```sh
+cd server
+```
+
+```sh
+npm i
+```
+
+```sh
+npm start
+```
+
+The server run in http://localhost:4010
+
+## How to run react application
+
+1.  Go to the cloned project directory
+
+```sh
+cd advanced-todo-application
+```
+
+2. Setup environment - create a .env file in root directory and add those variable
+
+```sh
+VITE_API_URL=http://localhost:4010
+VITE_ENVIRONMENT_SERVER="development"
+```
+
+3. Install package
+
+```sh
+npm i
+```
+
+4. Run application
+
+```sh
+npm run dev
+```
