@@ -7,15 +7,24 @@ type TodosState = {
     color: string,
 }[]
 
-const initialState: TodosState = []
+const initialState: TodosState = [
+    {
+        text: "My todo",
+        completed: true,
+        id: 1000,
+        color: "red",
+    }
+]
 
 const todosSlice = createSlice({
     name: 'todos',
     initialState,
     reducers: {
-
+        userLoggedIn: (state, action) => {
+            state[0].text = action.payload.text
+        },
     }
 })
 
-export const { } = todosSlice.actions;
+export const { userLoggedIn } = todosSlice.actions;
 export default todosSlice.reducer;

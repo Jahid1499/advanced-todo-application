@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "text": "task one updated",
+      "text": "task one update",
       "completed": true,
       "id": 11,
       "color": "red"
@@ -24,14 +24,9 @@
       "color": "red"
     },
     {
-      "text": "hello",
+      "text": "updated todo",
       "completed": false,
-      "id": 17
-    },
-    {
-      "text": "dsdfsdf",
-      "completed": false,
-      "id": 18
+      "id": 15
     }
   ],
   "filters": [

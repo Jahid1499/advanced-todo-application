@@ -11,6 +11,8 @@ export const filterApi = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: data
             })
+            // Optimistic update start
+            // Optimistic update start
         }),
 
         updateColorStatus: builder.mutation({
@@ -19,6 +21,8 @@ export const filterApi = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: data
             })
+            // Optimistic update start
+            // Optimistic update start
         }),
     })
 })
