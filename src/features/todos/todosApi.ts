@@ -6,12 +6,12 @@ import { apiSlice } from "../api/apiSlice";
 //     color?: "green" | "red" | "yellow";
 // }[];
 
-// type TodoTypes = {
-//   text: string;
-//   completed: boolean;
-//   id: number;
-//   color?: "green" | "red" | "yellow";
-// }
+type TodoTypes = {
+  text: string;
+  completed: boolean;
+  id: number;
+  color?: "green" | "red" | "yellow";
+}
 
 
 export const todosApi = apiSlice.injectEndpoints({
@@ -63,14 +63,22 @@ export const todosApi = apiSlice.injectEndpoints({
       ) {
         console.log(id, color, completed, text);
 
-        dispatch(
-          apiSlice.util.updateQueryData("getTodos", undefined, (draft) => {
-            console.log("TODOS ARRAY DRAFT", draft);
+        const updateDraft = dispatch(
+          todosApi.util.updateQueryData("getTodos", {}, (draft) => {
+            const draftTodos = draft.find(
+              (todo: TodoTypes) => todo.id == id
+            );
+            draftTodos.id = id;
+            draftTodos.completed = completed;
+            draftTodos.text = text;
           })
         );
 
-        const result = await queryFulfilled;
-        console.log(result);
+        try {
+          await queryFulfilled;
+        } catch (error) {
+          updateDraft.undo();
+        }
       },
     }),
     deleteTodos: builder.mutation({
