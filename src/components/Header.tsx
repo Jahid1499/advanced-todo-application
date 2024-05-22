@@ -2,17 +2,31 @@ import { useState } from "react";
 import tickImage from "../assets/images/double-tick.png";
 import noteImage from "../assets/images/notes.png";
 import plusImage from "../assets/images/plus.png";
-import { useAddTodosMutation } from "../features/todos/todosApi";
+import {
+  useAddTodosMutation,
+  useDeleteTodosMutation,
+  useGetTodosQuery,
+  useUpdateTodosMutation,
+} from "../features/todos/todosApi";
 import Error from "./ui/Error";
 import Success from "./ui/Success";
+
+type TodoTypes = {
+  text: string;
+  completed: boolean;
+  id: number;
+  color?: "green" | "red" | "yellow";
+};
 
 const Header = () => {
   const [input, setInput] = useState("");
   const [shown, setShown] = useState(false);
   const [inputError, setInputError] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [addTodos, { data: _todo, isSuccess, isError, isLoading }] =
+  const [addTodos, { data: isSuccess, isError, isLoading }] =
     useAddTodosMutation();
+  const { data: todos } = useGetTodosQuery({});
+  const [deleteTodo] = useDeleteTodosMutation();
+  const [updateTodos] = useUpdateTodosMutation();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (input.length > 4) {
@@ -21,9 +35,31 @@ const Header = () => {
     setInput(e.target.value);
   };
 
-  const clearHandler = () => {};
+  const clearHandler = () => {
+    const oldTodos = JSON.parse(JSON.stringify(todos));
+    oldTodos.map((todo: TodoTypes) => {
+      const { id } = todo;
+      if (todo?.completed) {
+        deleteTodo(id);
+      }
+    });
+  };
 
-  const completeHandler = () => {};
+  const completeHandler = () => {
+    const oldTodos = JSON.parse(JSON.stringify(todos));
+    oldTodos.map((todo: TodoTypes) => {
+      if (!todo.completed) {
+        updateTodos({
+          id: todo.id,
+          data: {
+            completed: true,
+            text: todo.text,
+            color: todo.color,
+          },
+        });
+      }
+    });
+  };
 
   const submitHandler = (e: { preventDefault: () => void }) => {
     // React.FormEventHandler<HTMLFormElement>;
