@@ -38,7 +38,6 @@ const Footer = () => {
   };
 
   const handleColorChange = (color: string) => {
-    console.log(colors, status);
     let newColor = JSON.parse(JSON.stringify(colors));
     if (newColor.includes(color)) {
       newColor = newColor.filter(

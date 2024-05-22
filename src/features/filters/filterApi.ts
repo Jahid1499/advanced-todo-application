@@ -34,17 +34,21 @@ export const filterApi = apiSlice.injectEndpoints({
                 url: `/filters/1`,
                 method: 'PATCH',
                 body: data
-            })
-            // {data: status: "Incomplete"
-            // id: 1}
+            }),
+            async onQueryStarted({ colors }, { queryFulfilled, dispatch }) {
 
-            // 0 : {
-            //     colors:[]
-            //     id:1
-            //     status:"All"
-            // }
-            // Optimistic update start
-            // Optimistic update start
+                const updateDraft = dispatch(
+                    filterApi.util.updateQueryData("getFilters", {}, (draft) => {
+                        draft[0].colors = colors
+                    })
+                );
+
+                try {
+                    await queryFulfilled;
+                } catch (error) {
+                    updateDraft.undo();
+                }
+            },
         }),
     })
 })
