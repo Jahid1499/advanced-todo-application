@@ -16,6 +16,7 @@ type TodoTypes = {
 
 export const todosApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+
     getTodos: builder.query({
       query: () => "/todos",
     }),
@@ -78,6 +79,7 @@ export const todosApi = apiSlice.injectEndpoints({
         }
       },
     }),
+
     deleteTodos: builder.mutation({
       query: (id) => ({
         url: `/todos/${id}`,
@@ -85,7 +87,6 @@ export const todosApi = apiSlice.injectEndpoints({
       }),
 
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        console.log(arg);
         const updateDraft = dispatch(
           todosApi.util.updateQueryData("getTodos", {}, (draft) => {
             const index = draft.findIndex(

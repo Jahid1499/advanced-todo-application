@@ -2,17 +2,31 @@ import { apiSlice } from "../api/apiSlice";
 
 export const filterApi = apiSlice.injectEndpoints({
     endpoints: builder => ({
+
         getFilters: builder.query({
             query: () => "/filters"
         }),
+
         updateStatus: builder.mutation({
             query: ({ id, data }) => ({
                 url: `/filters/${id}`,
                 method: 'PATCH',
                 body: data
-            })
-            // Optimistic update start
-            // Optimistic update start
+            }),
+
+            async onQueryStarted({ data }, { queryFulfilled, dispatch }) {
+                const updateDraft = dispatch(
+                    filterApi.util.updateQueryData("getFilters", {}, (draft) => {
+                        draft[0].status = data.status
+                    })
+                );
+
+                try {
+                    await queryFulfilled;
+                } catch (error) {
+                    updateDraft.undo();
+                }
+            },
         }),
 
         updateColorStatus: builder.mutation({
@@ -21,6 +35,14 @@ export const filterApi = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: data
             })
+            // {data: status: "Incomplete"
+            // id: 1}
+
+            // 0 : {
+            //     colors:[]
+            //     id:1
+            //     status:"All"
+            // }
             // Optimistic update start
             // Optimistic update start
         }),

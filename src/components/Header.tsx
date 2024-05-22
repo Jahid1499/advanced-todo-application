@@ -71,7 +71,7 @@ const Header = () => {
           onChange={handleInput}
         />
         <button disabled={isLoading} type="submit">
-          <img src={plusImage} className="w-8 h-8" alt="Add todo" />
+          <img src={plusImage} className="w-7" alt="Add todo" />
         </button>
       </form>
 

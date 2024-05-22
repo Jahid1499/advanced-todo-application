@@ -4,7 +4,7 @@
       "text": "task one",
       "completed": true,
       "id": 11,
-      "color": "yellow"
+      "color": "green"
     },
     {
       "text": "this is a simple todo application",
