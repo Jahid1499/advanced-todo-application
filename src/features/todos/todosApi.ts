@@ -6,6 +6,14 @@ import { apiSlice } from "../api/apiSlice";
 //     color?: "green" | "red" | "yellow";
 // }[];
 
+// type TodoTypes = {
+//   text: string;
+//   completed: boolean;
+//   id: number;
+//   color?: "green" | "red" | "yellow";
+// }
+
+
 export const todosApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getTodos: builder.query({
@@ -20,19 +28,25 @@ export const todosApi = apiSlice.injectEndpoints({
       }),
 
       // Pessimistically update start
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        const todo = await queryFulfilled;
+      async onQueryStarted(_, { queryFulfilled, dispatch }) {
+        const { data } = await queryFulfilled;
 
-        if (todo?.data?.id) {
-          console.log(todo); // show todo
-          // update todo cache pessimistically start
+        if (data?.id) {
+          // dispatch(
+          //   todosApi.endpoints.updateTodos.initiate({
+          //     id: todo.data.id,
+          //     data: {
+          //       text: "this is update text",
+          //       color: "green",
+          //       completed: true
+          //     }
+          //   })
+          // )
           dispatch(
-            apiSlice.util.updateQueryData("getTodos", undefined, (draft) => {
-              console.log(JSON.stringify(draft));
-              return draft;
+            todosApi.util.updateQueryData("getTodos", {}, (draft) => {
+              draft.push(data)
             })
           );
-          // update todo cache pessimistically end
         }
       },
     }),
