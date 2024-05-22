@@ -1,37 +1,15 @@
 {
   "todos": [
     {
-      "text": "task one update",
+      "text": "task one",
       "completed": true,
       "id": 11,
       "color": "red"
     },
     {
-      "text": "task two",
-      "completed": true,
-      "id": 12,
-      "color": "yellow"
-    },
-    {
-      "text": "this is a simple todo application using",
+      "text": "this is a simple todo application",
       "completed": false,
       "id": 13
-    },
-    {
-      "text": "first todo",
-      "completed": true,
-      "id": 14,
-      "color": "red"
-    },
-    {
-      "text": "sdfsdfasdfa",
-      "completed": false,
-      "id": 15
-    },
-    {
-      "text": "hello todo",
-      "completed": false,
-      "id": 16
     }
   ],
   "filters": [

@@ -50,6 +50,7 @@ export const todosApi = apiSlice.injectEndpoints({
         }
       },
     }),
+
     updateTodos: builder.mutation({
       query: ({ id, data }) => ({
         url: `/todos/${id}`,
@@ -57,12 +58,7 @@ export const todosApi = apiSlice.injectEndpoints({
         body: data,
       }),
 
-      async onQueryStarted(
-        { id, data: { color, completed, text } },
-        { queryFulfilled, dispatch }
-      ) {
-        console.log(id, color, completed, text);
-
+      async onQueryStarted({ id, data: { color, completed, text } }, { queryFulfilled, dispatch }) {
         const updateDraft = dispatch(
           todosApi.util.updateQueryData("getTodos", {}, (draft) => {
             const draftTodos = draft.find(
@@ -71,6 +67,7 @@ export const todosApi = apiSlice.injectEndpoints({
             draftTodos.id = id;
             draftTodos.completed = completed;
             draftTodos.text = text;
+            draftTodos.color = color;
           })
         );
 
@@ -86,6 +83,25 @@ export const todosApi = apiSlice.injectEndpoints({
         url: `/todos/${id}`,
         method: "DELETE",
       }),
+
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        console.log(arg);
+        const updateDraft = dispatch(
+          todosApi.util.updateQueryData("getTodos", {}, (draft) => {
+            const index = draft.findIndex(
+              (todo: TodoTypes) => todo.id == arg
+            );
+
+            draft.splice(index, 1)
+          })
+        );
+
+        try {
+          await queryFulfilled;
+        } catch (error) {
+          updateDraft.undo();
+        }
+      },
     }),
   }),
 });
