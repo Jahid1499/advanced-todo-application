@@ -4,12 +4,31 @@
       "text": "task one",
       "completed": true,
       "id": 11,
-      "color": "red"
+      "color": "yellow"
     },
     {
       "text": "this is a simple todo application",
       "completed": false,
-      "id": 13
+      "id": 13,
+      "color": "red"
+    },
+    {
+      "text": "this is task one",
+      "completed": true,
+      "id": 14,
+      "color": "green"
+    },
+    {
+      "text": "this is task two",
+      "completed": false,
+      "id": 15,
+      "color": "yellow"
+    },
+    {
+      "text": "this is task third",
+      "completed": true,
+      "id": 16,
+      "color": "green"
     }
   ],
   "filters": [
