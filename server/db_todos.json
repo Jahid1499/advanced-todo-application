@@ -1,16 +1,32 @@
 {
   "todos": [
     {
-      "text": "this is a simple todo application",
+      "text": "this is a simple todo application update",
       "completed": false,
       "id": 13,
-      "color": "red"
+      "color": "yellow"
     },
     {
       "text": "this is task two",
-      "completed": false,
+      "completed": true,
       "id": 15,
       "color": "yellow"
+    },
+    {
+      "text": "hello",
+      "completed": true,
+      "id": 16,
+      "color": "green"
+    },
+    {
+      "text": "sdfsdf",
+      "completed": false,
+      "id": 17
+    },
+    {
+      "text": "sdfsdfdfsdsfsdf",
+      "completed": false,
+      "id": 18
     }
   ],
   "filters": [

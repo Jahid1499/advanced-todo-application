@@ -14,6 +14,7 @@ const TodoList = () => {
   const { data: todos, isLoading, isError } = useGetTodosQuery({});
 
   const { data: filters } = useGetFiltersQuery({});
+  console.log(filters);
 
   let status = "";
   let colors = [];
